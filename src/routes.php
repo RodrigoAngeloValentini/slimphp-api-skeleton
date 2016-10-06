@@ -1,13 +1,6 @@
 <?php
-$container = $app->getContainer();
-$container['Api\Empresa\EmpresaController'] = function($c){
-  return new Api\Empresa\EmpresaController($c);
-};
 // Routes
 $app->get('/', function ($request, $response, $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
-
     // Render index view
     return $this->renderer->render($response, 'index.phtml', $args);
 });
@@ -23,8 +16,10 @@ $app->group('/api',function() {
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        //$response = $response->withHeader('Content-Type', 'application/json');
+        //$response->getBody()->write(json_encode($result, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+
         $response = $response->withJson($result,200);
-        $this->logger->info("Route: /api/empresa - Response :{$response}");
 
         return $response;
 

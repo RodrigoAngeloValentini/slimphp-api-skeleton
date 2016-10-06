@@ -27,6 +27,5 @@ class EmpresaController{
         $logger->info("Route: /api/empresa-class - Response :{$response}");
 
         return $response;
-
     }
 }

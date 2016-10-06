@@ -1,4 +1,8 @@
 <?php
-// Application middleware
+$app->add(function($req, $res, $next){
+    $return = $next($req, $res);
 
-// e.g: $app->add(new \Slim\Csrf\Guard);
+    $this->logger->info("Log content here");
+
+    return $return;
+});
