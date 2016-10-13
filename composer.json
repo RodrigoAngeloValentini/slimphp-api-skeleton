@@ -4,7 +4,8 @@
         "slim/slim": "^3.1",
         "slim/php-view": "^2.0",
         "monolog/monolog": "^1.17",
-        "tuupola/slim-basic-auth": "^2.2"
+        "tuupola/slim-basic-auth": "^2.2",
+        "tuupola/slim-jwt-auth": "^2.3"
     },
     "autoload": {
         "psr-4": {

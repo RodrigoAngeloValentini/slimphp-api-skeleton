@@ -17,5 +17,26 @@ $app->add(new \Slim\Middleware\HttpBasicAuthentication([
         "table" => "users",
         "user" => "email",
         "hash" => "senha"
-    ])
+    ]),
+    "error" => function ($request, $response, $arguments) {
+        $data = [];
+        $data["status"] = "false";
+        $data["message"] = $arguments["message"];
+        return $response
+            ->withHeader("Content-Type", "application/json")
+            ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+    }
 ]));
+
+//$app->add(new \Slim\Middleware\JwtAuthentication([
+//    "path" => "/api",
+//    "secret" => "mysecretkey",
+//    "secure" => false,
+//    "error" => function ($request, $response, $arguments) {
+//        $data["status"] = false;
+//        $data["message"] = $arguments["message"];
+//        return $response
+//            ->withHeader("Content-Type", "application/json")
+//            ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+//    }
+//]));
